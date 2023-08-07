@@ -1,5 +1,5 @@
 # No One Survived Server Auto-Restart Script
-[![de](https://img.shields.io/badge/lang-de-yello)](https://github.com/SoulofSorrow/NoOneSurvived/edit/main/README.de.md)
+[![de](https://img.shields.io/badge/lang-de-yello)](https://github.com/SoulofSorrow/NoOneSurvived/blob/main/README.de.md)
 
 This repository contains a simple Windows batch script designed to automatically restart the "No One Survived" game server in case of unexpected shutdowns or crashes.
 
