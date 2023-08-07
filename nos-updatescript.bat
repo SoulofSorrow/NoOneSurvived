@@ -1,44 +1,44 @@
 @echo off
 setlocal
 
-REM Konfigurationsvariablen
-set "GameServerDir=C:\gameserver\noonesurvivedserver"         REM Verzeichnis des Game
-set "SteamCMDDir=C:\SteamCMD"           REM Verzeichnis von SteamCMD
-set "SteamWebAPIKey="   REM Steam Web API-Schlüssel
-set "SteamAppID=2329680"                 REM App-ID 
-set "TmpDir=C:\gameserver\tmp\noonesurvivedserver"     REM Verzeichnis für die Sicherung der Dateien
-set "BackupParentDir=C:\gameserver\backup"     REM Verzeichnis für die Sicherung der Dateien
+REM Configuration variables
+set "GameServerDir=C:\gameserver\noonesurvivedserver"        REM Game server directory
+set "SteamCMDDir=C:\SteamCMD"            REM SteamCMD directory
+set "SteamWebAPIKey="    REM Steam Web API key
+set "SteamAppID=2329680"                  REM App-ID
+set "TmpDir=C:\gameserver\tmp\noonesurvivedserver"      REM Directory for temporary backup files
+set "BackupParentDir=C:\gameserver\backup"      REM Directory for storing backup files
 
-REM Datum im Format JJJJ-MM-TT erfassen
+REM Capture the current date in YYYY-MM-DD format
 for /F "tokens=1-3 delims=-" %%a in ('echo %date%') do (
     set "year=%%c"
     set "month=%%a"
     set "day=%%b"
 )
 
-REM Backup-Verzeichnisnamen mit dem aktuellen Datum erstellen
+REM Create backup directory name with the current date
 set "BackupDir=%BackupParentDir%\%year%-%month%-%day%"
 
-REM Sicherung der Savegames
+REM Backup the save games
 robocopy "%GameServerDir%\WRSH\Saved\SaveGames" "%BackupDir%" /e
 
-REM Sicherung der Konfigurationsdateien
-echo Sichere Konfigurationsdateien...
+REM Backup the configuration files
+echo Backing up configuration files...
 robocopy "%GameServerDir%\WRSH\Saved\Config\WindowsServer" "%tmpDir%" game.ini gameusersettings.ini
 
-REM SteamCMD ausführen, um den NoOneSurvived-Server zu aktualisieren
-echo Aktualisiere NoOneSurvived-Server...
+REM Run SteamCMD to update the NoOneSurvived server
+echo Updating NoOneSurvived server...
 cd /d "%SteamCMDDir%"
 steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "%GameServerDir%" +login anonymous +app_update %SteamAppID% validate +quit
 
-REM Wiederherstellen der Konfigurationsdateien
-echo Stelle Konfigurationsdateien wieder her...
+REM Restore the configuration files
+echo Restoring configuration files...
 robocopy "%tmpDir%" "%GameServerDir%\WRSH\Saved\Config\WindowsServer" game.ini gameusersettings.ini
 
-REM Bereinigung: Lösche das Backup-Verzeichnis
-echo Lösche temporäre Sicherungsdateien...
+REM Cleanup: Delete the backup directory
+echo Deleting temporary backup files...
 rmdir /s /q "%tmpDir%"
 
-echo Aktualisierung abgeschlossen.
+echo Update completed.
 endlocal
 pause
