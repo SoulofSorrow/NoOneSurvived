@@ -1,4 +1,5 @@
 ## Startscript README
+[![de](https://img.shields.io/badge/lang-de-yello)]https://github.com/SoulofSorrow/NoOneSurvived/edit/main/README.de.md
 
 ### Beschreibung
 Dieses Startscript wurde entwickelt, um den No One Survived Game-Server zu starten und die Prozessüberwachung hinzuzufügen, um den Server automatisch neu zu starten, falls er abstürzt oder unerwartet beendet wird. Das Skript verwendet Batch-Skripting, um den Startvorgang zu automatisieren und die Serverkonfiguration zu vereinfachen.
