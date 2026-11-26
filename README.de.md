@@ -28,6 +28,13 @@ Bitte verwenden Sie dieses Skript verantwortungsbewusst und in Übereinstimmung 
 
 ---
 
+## Dokumentation
+
+- [`docs/`](docs/README.md): Ablauf und Variablen der Skripte, vorrangig für KI-Coding-Agenten geschrieben (Englisch).
+- [`AGENTS.md`](AGENTS.md): Regeln und Ablauf für KI-Coding-Agenten.
+
+---
+
 # NoOneSurvived Server Update Script
 
 Dieses Skript dient dazu, den NoOneSurvived-Server zu aktualisieren und dabei eine Sicherung der Savegames und Konfigurationsdateien durchzuführen.
