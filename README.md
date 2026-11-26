@@ -27,6 +27,13 @@ Please use this script responsibly and in accordance with the game server's term
 
 ---
 
+## Documentation
+
+- [`docs/`](docs/README.md): script flow and variables, written for AI coding agents first.
+- [`AGENTS.md`](AGENTS.md): rules and workflow for AI coding agents.
+
+---
+
 # NoOneSurvived Server Update Script
 
 This script is designed to update the NoOneSurvived server while creating a backup of the savegames and configuration files.
